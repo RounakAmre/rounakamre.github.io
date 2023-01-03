@@ -1,0 +1,422 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic Page - Massively by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Rounak Amre</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<!--<li class="active"><a href="generic.html">Generic Page</a></li>
+							<li><a href="elements.html">Elements Reference</a></li>-->
+						</ul>
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+									<h1>Data Analytics using Python</h1>
+									<p>Analysis of transporation data<br />
+										<!--Building of ML model to predict household trip numbers<br />
+										Tableau based data visualization--></p>
+								</header>
+								
+								<p>
+									<b>Mission:</b>
+								</p>
+								<p>
+									We will attempt to study the Transportation dataset(dated: 2008). Our aim
+									is to :
+								</p>
+								<p>
+									1. Ascertain if any of the variables have an impact on the number of trip
+									undertaken by a household
+								</p>
+								<p>
+									2. Create a linear regression model that predicts the number of trips
+									undertaken by a household.
+								<!--</p>
+								<p>
+									3. Create and train a linear regression machine learning model using 80/20%
+									strategy from the data.
+								</p>
+								<p>
+									4. Create insightful plots using Tableau.
+								</p>-->
+								<p>
+									<b>Data Overview:</b>
+								</p>
+								<p>
+									Let’s import the Pandas library, read the dataset and have an overview of
+									the dataset:
+								</p>
+								<p>
+									<img
+										src="images/DataDescribeCode.png"
+									/>
+								</p>
+								<p>
+									Running this program, we get:
+								</p>
+								<p>
+									<img
+										width="950"
+										src="images/DataDescribe.png"
+									/>
+								</p>
+								<p>
+									Our primary dependent variable is “tripnum”.
+								</p>
+								<!--<p>
+									The independent variables are:
+								</p>
+								<p>
+									1.district : The district id
+								</p>
+								<p>
+									2.HHSIZE: Number of people in the household
+								</p>
+								<p>
+									3.NUMADLT: Number of adults in the household
+								</p>
+								<p>
+									4.WRKCOUNT:
+								</p>
+								<p>
+									5.LIF_CYC:
+								</p>
+								<p>
+									6.DRVRCNT:
+								</p>
+								<p>
+									7.HHVEHCNT:
+								</p>
+								<p>
+									8.HHFAMINC:
+								</p>
+								<p>
+									9.HOMEOWN:
+								</p>
+								<p>
+									10.HOMETYPE:
+								</p>
+								<p>
+									11.HH_HISP:
+								</p>
+								<p>
+									12.URBANSIZE:
+								</p>
+								<p>
+									13.TRAVDAY:
+								</p>
+								<p>
+									14.FL1:
+								</p>
+								<p>
+									15.FL2_YR:
+								</p>
+								<p>
+									16.NUMCHILD: Number of children in a household
+								</p>-->
+								<p>
+									<b>Data Cleaning:</b>
+								</p>
+								<p>
+									We see that there are some null values in the DataSet:
+								</p>
+								<p>
+									<img
+										width="750"
+										src="images/MissingValuesCode.png"
+									/>
+								</p>
+								<p align="center">
+									<img
+										width="114"
+										height="227"
+										src="images/MissingValues.png"
+										alt="A picture containing text
+								
+								Description automatically generated"
+									/>
+								</p>
+								<p>
+									<img
+										width="475"
+										height="47"
+										src="images/NoneValues.png"
+										alt="A screenshot of a computer
+								
+								Description automatically generated with low confidence"
+									/>
+								</p>
+								<p>
+									We can handle this in different ways like:
+								</p>
+								<p>
+									1. Remove rows with missing values
+								</p>
+								<p>
+									2. Replace missing values with mean/mode/median
+								</p>
+								<p>
+									We will replace the missing values with the mode of the column values.
+								</p>
+								<p>
+									For a single column(HHFAMINC):
+								</p>
+								<p>
+									<img
+										width="750"
+										src="images/ReplaceMissingCodeSingle.png"
+										alt="A screenshot of a computer
+								
+								Description automatically generated with low confidence"
+									/>
+								</p>
+								<p align="center">
+									<img
+										width="750"
+										src="images/HHFAMINCMode.png"
+									/>
+								</p>
+								<p align="center">
+									<img
+										width="750"
+										src="images/ReplaceMissingCodeSingle.png"
+									/>
+								</p>
+								<p>
+									The above code helps us in cleaning the data. We will similarly replace NaN
+									values in all the columns that consist NaN values with their respective
+									column modes:
+								</p>
+								<p align="center">
+									<img
+										width="750"
+										src="images/ReplaceMissingValuesCodeAll.png"
+									/>
+								</p>
+								<p>
+									We see that all the null values have been replaced:
+								</p>
+								<p align="center">
+									<img
+										width="750"
+										src="images/MissingValuesReplaced.png"
+										alt="A picture containing table
+								
+								Description automatically generated"
+									/>
+								</p>
+								<p align="center">
+									<img
+										width="200"
+										src="images/MissingValuesReplacedSummary.png"
+										alt="A screenshot of a computer
+								
+								Description automatically generated with low confidence"
+									/>
+								</p>
+								<p>
+									<b>Exploratory Data Analysis</b>
+								</p>
+								<p>
+									Lets describe the data:
+								</p>
+								<p>
+									<img
+										width="900"
+										src="images/DataDescribeCode.png"
+									/>
+								</p>
+								<p>
+									<img
+										width="900"
+										src="images/DataDescribe.png"
+									/>
+								</p>
+								<p>
+									We can see some important information in the above table, like the count,
+									mean, standard deviation, min, maximum and the value at 25%, 50% and 75%
+									from min.
+								</p>
+								<p>
+									Since our dependent variable of choice is the tripnum, let us do
+									exploratory analysis on it.
+								</p>
+								<p>
+									<b>Boxplot:</b>
+								</p>
+								<p>
+									<img
+										width="900"
+										src="images/BoxPlotCode.png"
+									/>
+								</p>
+								<p>
+									<b>Box Plot output:</b>
+								</p>
+								<p>
+									<img
+										width="624"
+										height="299"
+										src="images/tripnum_boxplot.png"
+										alt="Chart, box and whisker chart
+								
+								Description automatically generated"
+									/>
+								</p>
+								<p>
+									<img
+										width="624"
+										height="299"
+										src="images/tripnum_line_plot.png"
+										alt="Chart
+								
+								Description automatically generated"
+									/>
+								</p>
+								<p>
+									<b>Correlation</b>
+								</p>
+								<p>
+									Lets create a table to find correlation between the variables:
+								</p>
+								<p>
+									<img
+										width="750"
+										src="images/CorrTableCode.png"
+										alt="A picture containing graphical user interface
+								
+								Description automatically generated"
+									/>
+								</p>
+								<p>
+									<img
+										width="750"
+										src="images/Dataset_Corr_Table.png"
+										alt="A picture containing graphical user interface
+								
+								Description automatically generated"
+									/>
+								</p>
+								<p>
+									<b>Plotting the correlation heat map:</b>
+								</p>
+								<p>
+									<img
+										width="750"
+										src="images/CorrHeathMapCode.png"
+										alt="A picture containing graphical user interface
+								
+								Description automatically generated"
+									/>
+								</p>
+								<p>
+									Output:
+								</p>
+								<p>
+									<img
+										width="750"
+										src="images/CorrelationHeatMap.png"
+										alt="Chart, treemap chart
+								
+								Description automatically generated"
+									/>
+								</p>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>4000 SW 37th Blvd<br />
+								Gainesville, FL 32608</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(352) 999-2507</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">rounakamre24@gmail.com</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="https://www.linkedin.com/in/rounakamre/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
